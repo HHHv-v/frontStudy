@@ -1,24 +1,32 @@
 import "./App.css";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-
-// const Header = () =>{
-
-//   return (
-//     <header>
-//       <h1>header</h1>
-//     </header>
-//   );
-// };
+import { useState } from "react";
 
 function App() {
-  // 부모 component, root component render 메서드의 인수로 전달
+  const [count, setCount] = useState(0);
+  const [light, setLight] = useState("OFF");
+
   return (
     <>
-      <Header />
-      <Main />
-      <Footer />
+      <div>
+        <h1>{light}</h1>
+        <button
+          onClick={() => {
+            setLight(light === "ON" ? "OFF" : "ON");
+          }}
+        >
+          {light === "ON" ? "끄기" : "켜키"}
+        </button>
+      </div>
+      <div>
+        <h1>{count}</h1>
+        <button
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          +
+        </button>
+      </div>
     </>
   );
 }
